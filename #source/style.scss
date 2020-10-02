@@ -199,6 +199,11 @@ body {
 
   .promo-container__image {
     flex-basis: 45%;
+
+    .graph {
+      width: 100%;
+      height: 406px;
+    }
   }
 }
 
@@ -217,7 +222,11 @@ body {
     & p {
       text-align: center;
       font-size: 10px;
-      flex-basis: 128px;
+      flex-basis: 140px;
+    }
+    & .branches {
+      width: 20px;
+      height: 46px;
     }
   }
 }
@@ -267,8 +276,13 @@ body {
   .container {
     width: 720px;
   }
-  .promo-container .promo-container__text {
-    padding-top: 0;
+  .promo-container {
+    .promo-container__text {
+      padding-top: 0;
+    }
+    .promo-container__image .graph {
+      height: 308px;
+    }
   }
 }
 

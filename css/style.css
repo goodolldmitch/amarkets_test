@@ -237,6 +237,10 @@ body {
 .promo-container .promo-container__image {
   flex-basis: 45%;
 }
+.promo-container .promo-container__image .graph {
+  width: 100%;
+  height: 406px;
+}
 
 .awards {
   flex-wrap: wrap;
@@ -250,7 +254,11 @@ body {
 .awards .awards__item p {
   text-align: center;
   font-size: 10px;
-  flex-basis: 128px;
+  flex-basis: 140px;
+}
+.awards .awards__item .branches {
+  width: 20px;
+  height: 46px;
 }
 
 @media (max-width: 1290px) {
@@ -301,6 +309,9 @@ body {
 
   .promo-container .promo-container__text {
     padding-top: 0;
+  }
+  .promo-container .promo-container__image .graph {
+    height: 308px;
   }
 }
 @media (max-width: 750px) {
