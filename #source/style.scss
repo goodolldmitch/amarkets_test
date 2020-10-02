@@ -104,6 +104,10 @@ body {
         flex-direction: row-reverse;
       }
 
+      &:hover .dropdown .hidden {
+        display: none;
+      }
+
       & .dropdown {
         position: absolute;
         padding-top: 30px;
@@ -253,6 +257,11 @@ body {
       width: 200px;
     }
   }
+
+  .header .header__menu ul li:hover .dropdown .hidden {
+    display: flex;
+  }
+
   .promo-container .promo-container__text h1 {
     font-size: 30px;
   }
@@ -300,11 +309,11 @@ body {
 
 @media (max-width: 500px) {
   .container {
-    width: 320px;
+    width: 300px;
   }
   .header {
     & .header__logo img {
-      margin-right: 10px;
+      margin-right: 3px;
     }
   }
   .awards {
