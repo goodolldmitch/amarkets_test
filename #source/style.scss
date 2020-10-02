@@ -1,0 +1,301 @@
+/* обнуление стилей по умолчанию */
+
+@import "reset.scss";
+
+/* подключение шрифтов */
+
+@font-face {
+  font-family: "GothamProBold";
+  src: url("../fonts/GothamPro-Bold.eot");
+  src: local("Gotham Pro Bold"), local("GothamPro-Bold"),
+    url("../fonts/GothamPro-Bold.eot?#iefix") format("embedded-opentype"),
+    url("../fonts/GothamPro-Bold.woff") format("woff"),
+    url("../fonts/GothamPro-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "GothamProRegular";
+  src: url("../GothamPro.eot");
+  src: local("Gotham Pro"), local("GothamPro"),
+    url("../fonts/GothamPro.eot?#iefix") format("embedded-opentype"),
+    url("../fonts/GothamPro.woff") format("woff"),
+    url("../fonts/GothamPro.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+// Задаем переменные
+
+$textColor: #4a4a4a;
+$themeColor: #fb7101;
+$hoverColor: #ff8a2c;
+$whiteColor: #fff;
+$blackColor: #000;
+$reg: GothamProRegular;
+$bold: GothamProBold;
+
+// Задаем шаблоны
+
+%flexRow {
+  display: flex;
+  justify-content: space-between;
+}
+
+// Глобальные настройки
+
+body {
+  font: 14px $reg;
+}
+
+.container {
+  width: 1280px;
+  margin: 0 auto;
+}
+
+.hidden {
+  display: none;
+}
+
+// Шапка
+
+.header {
+  @extend %flexRow;
+  flex-wrap: wrap;
+  align-items: center;
+  height: 50px;
+
+  .header__logo img {
+    width: 33px;
+    height: 32px;
+    margin-right: 30px;
+    vertical-align: middle;
+  }
+
+  .header__menu ul {
+    @extend %flexRow;
+    position: relative;
+
+    & li {
+      margin: 0 10px;
+
+      & img {
+        vertical-align: middle;
+      }
+
+      & .dropdown li {
+        list-style: none;
+        display: none;
+      }
+
+      &:hover .dropdown li {
+        display: flex;
+        flex-direction: row-reverse;
+      }
+
+      & .dropdown {
+        position: absolute;
+        padding-top: 30px;
+        right: 0;
+        display: flex;
+        flex-direction: column;
+        background: $whiteColor;
+        padding: 10px;
+
+        & li a {
+          padding-top: 10px;
+
+          &:hover {
+            color: $blackColor;
+          }
+        }
+      }
+    }
+
+    & a {
+      color: $textColor;
+    }
+  }
+
+  .header__button button {
+    background: none;
+    padding: 10px 21px;
+    border: 1px solid $textColor;
+  }
+}
+
+// Промо-блок
+
+.promo-container {
+  @extend %flexRow;
+  align-items: stretch;
+  padding-top: 15px;
+
+  .promo-container__text {
+    flex-basis: 55%;
+    padding-top: 70px;
+
+    & h1 {
+      font-family: $bold;
+      font-size: 40px;
+      line-height: 120%;
+      color: $textColor;
+    }
+
+    & button {
+      background: $themeColor;
+      border-radius: 3px;
+      border: none;
+      padding: 20px;
+      margin: 64px 0 20px 0;
+      font-family: $bold;
+      font-size: 16px;
+      line-height: 15px;
+      text-align: center;
+      text-transform: uppercase;
+      color: $whiteColor;
+
+      &:hover {
+        background: $hoverColor;
+      }
+
+      & span {
+        display: block;
+        font-family: $reg;
+        font-size: 14px;
+        line-height: 13px;
+        text-align: center;
+        text-transform: none;
+        color: $whiteColor;
+        margin-top: 5px;
+      }
+    }
+    & p {
+      font-family: $reg;
+      font-size: 18px;
+      line-height: 17px;
+      color: $blackColor;
+
+      & a {
+        color: $themeColor;
+
+        &:hover {
+          color: $hoverColor;
+        }
+      }
+    }
+  }
+
+  .promo-container__image {
+    flex-basis: 45%;
+  }
+}
+
+// Блок с наградами
+
+.awards {
+  @extend %flexRow;
+  flex-wrap: wrap;
+  padding-top: 100px;
+
+  & .awards__item {
+    @extend %flexRow;
+    align-items: center;
+    flex-basis: 185px;
+    margin-bottom: 25px;
+    & p {
+      text-align: center;
+      font-size: 10px;
+      flex-basis: 128px;
+    }
+  }
+}
+
+// Адаптив
+
+@media (max-width: 1290px) {
+  .container {
+    width: 960px;
+  }
+  .not-big-res {
+    display: none;
+  }
+  .hidden {
+    display: block;
+  }
+  .dropdown {
+    button {
+      background: none;
+      padding: 10px 21px;
+      border: 1px solid $textColor;
+    }
+    li {
+      width: 200px;
+    }
+  }
+  .promo-container .promo-container__text h1 {
+    font-size: 30px;
+  }
+  .promo-container .promo-container__text button {
+    margin-top: 20px;
+  }
+  .awards {
+    padding-top: 50px;
+    justify-content: space-around;
+    & .awards__item {
+      flex-shrink: 1;
+
+      & p {
+        flex-shrink: 1;
+      }
+    }
+  }
+}
+
+@media (max-width: 1000px) {
+  .container {
+    width: 720px;
+  }
+  .promo-container .promo-container__text {
+    padding-top: 0;
+  }
+}
+
+@media (max-width: 750px) {
+  .container {
+    width: 480px;
+  }
+  .promo-container .promo-container__text {
+    flex-basis: 100%;
+  }
+  .promo-container .promo-container__image {
+    display: none;
+  }
+}
+
+@media (max-width: 500px) {
+  .container {
+    width: 320px;
+  }
+  .header {
+    & .header__logo img {
+      margin-right: 10px;
+    }
+  }
+  .awards {
+    & .awards__item {
+      flex-basis: 142px;
+    }
+  }
+}
